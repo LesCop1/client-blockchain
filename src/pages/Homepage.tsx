@@ -6,7 +6,7 @@ export default class Homepage extends React.Component<void, void>{
     render() {
         return (
             <div>
-                <div>Homepage</div>
+                <div>Homepage c'est le meilleur site d'internet</div>
                 <br />
                 <div>Big one</div>
                 <ExampleComponent text={"ExampleComponent"} size={"big"} />
