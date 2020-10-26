@@ -12,6 +12,7 @@ export default function ExampleComponent(props: ExampleComponentProps) {
     useEffect(() => {
         const intervalID = setInterval(() => {
             setTick((prevTick) => {
+                console.log("test");
                 return prevTick + 1
             })
         }, 1000);
