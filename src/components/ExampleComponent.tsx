@@ -1,9 +1,15 @@
 import React, {useEffect, useState} from "react";
 
+
 type ExampleComponentProps = {
     text: string,
     size: "small" | "normal" | "big",
     hidden?: boolean,
+}
+
+type StringAccount = {
+    text: string
+    type? : "Enter" | "Repeat"
 }
 
 export default function ExampleComponent(props: ExampleComponentProps) {
@@ -36,3 +42,7 @@ export default function ExampleComponent(props: ExampleComponentProps) {
         </div>
     )
 }
+export function TextArea(props: StringAccount) {
+    return <input type="text" placeholder={props.type + " " + props.text } required></input>
+}
+

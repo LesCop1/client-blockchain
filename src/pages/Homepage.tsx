@@ -1,25 +1,25 @@
 import React from "react";
-import ExampleComponent from "../components/ExampleComponent";
+import ExampleComponent, {TextArea} from "../components/ExampleComponent";
 import {Link} from "react-router-dom";
 
-export default class Homepage extends React.Component<void, void>{
+export default class Homepage extends React.Component<void, void> {
     render() {
-        return (
+        let div = <>
             <div>
-                <div>Homepage</div>
-                <br />
-                <div>Big one</div>
-                <ExampleComponent text={"ExampleComponent"} size={"big"} />
-                <br />
-                <div>Small one</div>
-                <ExampleComponent text={"ExampleComponent"} size={"small"} />
-                <br />
-                <div>Hidden one</div>
-                <ExampleComponent text={"ExampleComponent"} size={"small"} hidden={true} />
+                <div>Sign up</div>
+                <div>
+                    <h1>Sign Up</h1>
+                    <label>EMAIL</label>
+                    <br/>
+                    <TextArea text={"Email"} type={"Enter"}/>
+                    <br/>
+                </div>
                 <div>End Homepage</div>
-                <br />
+                <br/>
                 <Link to="/nowhere">To 404 - NotFound page</Link>
+                <br/>
             </div>
-        )
+        </>;
+
     }
 }
