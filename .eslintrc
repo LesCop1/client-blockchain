@@ -1,0 +1,64 @@
+{
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"sourceType": "module",
+		"project": [
+			"./tsconfig.json",
+			"./electron/tsconfig.json"
+		]
+	},
+	"env": {
+		"browser": true,
+		"node": true,
+		"es2021": true
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"plugins": [
+		"@typescript-eslint",
+		"react",
+		"prettier",
+		"react-hooks"
+	],
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:@typescript-eslint/recommended-requiring-type-checking",
+		"plugin:import/errors",
+		"plugin:import/warnings",
+		"plugin:import/typescript",
+		"airbnb-typescript",
+		"airbnb/hooks",
+		"plugin:react/recommended",
+		"prettier",
+		"prettier/@typescript-eslint",
+		"prettier/react",
+		"plugin:prettier/recommended"
+	],
+	"rules": {
+		"react/jsx-uses-react": "error",
+		"react/jsx-uses-vars": "error",
+		"react/prefer-stateless-function": [
+			0
+		],
+		"react/require-default-props": [
+			0
+		],
+		"react/destructuring-assignment": [
+			0
+		],
+		"prettier/prettier": [
+			"error",
+			{
+				"endOfLine": "auto"
+			}
+		],
+		"no-console": "warn"
+	}
+}
