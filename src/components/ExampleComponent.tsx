@@ -1,43 +1,35 @@
-import React, { useEffect, useState } from "react";
+import Button from "@material-ui/core/Button/Button";
+import React from "react";
+import "./Button.scss";
 
-type ExampleComponentProps = {
-	text: string;
-	size: "small" | "normal" | "big";
-	hidden?: boolean;
+type StringAccount = {
+	type: "Email" | "Password";
 };
 
-export default function ExampleComponent(props: ExampleComponentProps): JSX.Element {
-	const [tick, setTick] = useState(0);
-
-	useEffect(() => {
-		const intervalID = setInterval(() => {
-			setTick((prevTick) => {
-				return prevTick + 1;
-			});
-		}, 1000);
-
-		return () => {
-			clearInterval(intervalID);
-		};
-	}, []);
-
-	if (props.size === "small") {
-		return (
-			<div>
-				<h3 hidden={props.hidden}>{`${props.text} ${tick}`}</h3>
-			</div>
-		);
-	}
-	if (props.size === "normal") {
-		return (
-			<div>
-				<h2 hidden={props.hidden}>{`${props.text} ${tick}`}</h2>
-			</div>
-		);
-	}
-	return (
+export default function TextArea(props: StringAccount): JSX.Element {
+	return props.type === "Email" ? (
 		<div>
-			<h1 hidden={props.hidden}>{`${props.text} ${tick}`}</h1>
+			<label htmlFor="Type">
+				Email :
+				<br />
+				<input type="text" placeholder="patrickxx@example.com" required />
+			</label>
 		</div>
+	) : (
+		<div>
+			<label htmlFor="Type">
+				Mot de passe :
+				<br />
+				<input type="text" placeholder="**********" required />
+			</label>
+		</div>
+	);
+}
+
+export function ButtonValidation(): JSX.Element {
+	return (
+		<Button className="validation" variant="contained" href="#contained-buttons">
+			Valider
+		</Button>
 	);
 }
