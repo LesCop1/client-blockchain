@@ -1,0 +1,73 @@
+//fond de page image
+.back {
+	height: 100vh;
+	width: 100%;
+	background-image: url(../image/dominik-dombrowski-KNUp-YBwBSE-unsplash.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+
+//image icone
+.icone {
+	background-image: url(../image/contour.png);
+	height: 50px;
+	width: 50px;
+}
+
+//fond connexion / creation /...
+.form {
+	width: 375px;
+	background-color: #cfcfcf;
+	border-radius: 20px;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+//bouton validation
+.validation {
+	position: relative;
+	cursor: pointer;
+	overflow: hidden;
+	//transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
+	width: 35%;
+	height: 40px;
+	font-size: 18px;
+	border-radius: 20px;
+	border-color: #0f384a;
+	background-color: #0f384a;
+	text-align: center;
+	margin-top: 8%;
+	margin-bottom: 5%;
+	color: #ffffff;
+}
+
+//centrer
+.center {
+	display: flex;
+	justify-content: center;
+}
+//decalage de 10px
+.shift_input {
+	margin: 10px;
+}
+
+
+.style {
+	height: 40px;
+	font-size: 16px;
+	border-radius: 15px;
+	border-color: #cfcfcf;
+}
+
+//lien vers "mot de passe oublie
+.link_fp {
+	color: #6A8AA6 ;
+	opacity: 80%;
+	margin-left: 10%;
+}
+
+.text_color_main {
+	color : #0f384a;
+}
