@@ -6,7 +6,7 @@ export default class NotFound extends React.Component<void, void> {
 		return (
 			<div>
 				<div>404 - Not found</div>
-				<Link to="/">To Homepage</Link>
+				<Link to="/signin">To Homepage</Link>
 			</div>
 		);
 	}

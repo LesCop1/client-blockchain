@@ -17,7 +17,8 @@
 
 //fond connexion / creation /...
 .form {
-	width: 375px;
+	width: 450px;
+	padding : 2%;
 	background-color: #cfcfcf;
 	border-radius: 20px;
 	position: absolute;
@@ -27,20 +28,7 @@
 
 //bouton validation
 .validation {
-	position: relative;
-	cursor: pointer;
-	overflow: hidden;
-	//transition: width 0.3s 0.15s, font-size 0.1s 0.15s;
-	width: 35%;
-	height: 40px;
-	font-size: 18px;
-	border-radius: 20px;
-	border-color: #0f384a;
-	background-color: #0f384a;
-	text-align: center;
-	margin-top: 8%;
-	margin-bottom: 5%;
-	color: #ffffff;
+	color: #0f384a;
 }
 
 //centrer
@@ -48,6 +36,7 @@
 	display: flex;
 	justify-content: center;
 }
+
 //decalage de 10px
 .shift_input {
 	margin: 10px;
@@ -70,4 +59,15 @@
 
 .text_color_main {
 	color : #0f384a;
+}
+
+.ui {
+	display: flex;
+	justify-content: center;
+	width: 70%;
+	text-align: center;
+}
+
+.test {
+	width: 80%;
 }
