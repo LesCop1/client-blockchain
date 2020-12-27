@@ -8,46 +8,34 @@
 	background-size: cover;
 }
 
-//image icone
 .icone {
-	background-image: url(../image/contour.png);
 	height: 50px;
 	width: 50px;
+	background-image: url(../image/contour.png);
+	background-size: cover;
+}
+
+.ecocoin {
+	font-family: fantasy;
+	font-size: large;
 }
 
 //fond connexion / creation /...
 .form {
-	width: 450px;
+	width: 400px;
 	padding : 2%;
 	background-color: #cfcfcf;
-	border-radius: 20px;
+	border-radius: 5px;
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-}
-
-//bouton validation
-.validation {
-	color: #0f384a;
 }
 
 //centrer
 .center {
 	display: flex;
 	justify-content: center;
-}
-
-//decalage de 10px
-.shift_input {
-	margin: 10px;
-}
-
-
-.style {
-	height: 40px;
-	font-size: 16px;
-	border-radius: 15px;
-	border-color: #cfcfcf;
+	text-align: center;
 }
 
 //lien vers "mot de passe oublie
@@ -58,16 +46,9 @@
 }
 
 .text_color_main {
-	color : #0f384a;
+	color : #0f384a ;
 }
 
-.ui {
-	display: flex;
-	justify-content: center;
-	width: 70%;
-	text-align: center;
-}
-
-.test {
-	width: 80%;
+.text_color_link {
+	color : #6A8AA6 ;
 }

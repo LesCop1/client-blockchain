@@ -13,7 +13,7 @@ export function Icone(): JSX.Element {
 	return (
 		<div>
 			<div className="icone" />
-			<div>Ecocoin</div>
+			<div className="ecocoin text_color_main">Ecocoin</div>
 		</div>
 	);
 }

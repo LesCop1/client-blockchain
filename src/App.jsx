@@ -5,8 +5,8 @@ import SignIn from "./pages/SignIn";
 import NotFound from "./pages/NotFound";
 import SignUp from "./pages/SignUp";
 import ForgetPass from "./pages/ForgetPass";
-import ValidationCode from "./pages/ValidationCode";
 import ModifyPass from "./pages/ModifyPass";
+import Validation from "./pages/Validation";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function App() {
@@ -15,7 +15,7 @@ function App() {
 			<Switch>
 				<Route exact path="/signin" component={SignIn} />
 				<Route exact path="/changepassword" component={ModifyPass} />
-				<Route exact path="/validationcode" component={ValidationCode} />
+				<Route exact path="/validation" component={Validation} />
 				<Route exact path="/forgotpassword" component={ForgetPass} />
 				<Route exact path="/signup" component={SignUp} />
 				<Route component={NotFound} />
