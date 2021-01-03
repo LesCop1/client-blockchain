@@ -23,15 +23,15 @@ export default class ModifyPass extends React.Component<never, State> {
 		};
 	}
 
+	handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		this.setState({ password: event.target.value });
+	};
+
+	handleConfirPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		this.setState({ cpassword: event.target.value });
+	};
+
 	render(): JSX.Element {
-		const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-			this.setState({ password: event.target.value });
-		};
-
-		const handleConfirPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-			this.setState({ cpassword: event.target.value });
-		};
-
 		return (
 			<Container className="back" component="main" maxWidth="xl">
 				<Icone />
@@ -52,7 +52,7 @@ export default class ModifyPass extends React.Component<never, State> {
 								type="password"
 								id="newpassword"
 								value={this.state.password}
-								onChange={handlePasswordChange}
+								onChange={this.handlePasswordChange}
 								autoComplete="current-password"
 							/>
 							<TextField
@@ -65,7 +65,7 @@ export default class ModifyPass extends React.Component<never, State> {
 								type="password"
 								id="confnewpassword"
 								value={this.state.cpassword}
-								onChange={handleConfirPasswordChange}
+								onChange={this.handleConfirPasswordChange}
 								autoComplete="current-password"
 							/>
 							<Button

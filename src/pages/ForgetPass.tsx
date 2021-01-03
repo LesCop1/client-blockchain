@@ -22,10 +22,11 @@ export default class ForgetPass extends React.Component<void, State> {
 		};
 	}
 
+	handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		this.setState({ email: event.target.value });
+	};
+
 	render(): JSX.Element {
-		const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-			this.setState({ email: event.target.value });
-		};
 		return (
 			<Container className="back" component="main" maxWidth="xl">
 				<Icone />
@@ -45,7 +46,7 @@ export default class ForgetPass extends React.Component<void, State> {
 								label="Your email"
 								name="email"
 								value={this.state.email}
-								onChange={handleEmailChange}
+								onChange={this.handleEmailChange}
 								autoComplete="email"
 								autoFocus
 							/>

@@ -1,18 +1,20 @@
-import React from "react";
+import React, { FormEvent } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import axios from "axios";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import { Link as RouterLink } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
-
 import { Icone } from "../components/ExampleComponent";
 
 interface State {
 	email: string;
 	password: string;
+	errorMessage: string;
+	url: string;
 }
 
 export default class SignIn extends React.Component<never, State> {
@@ -22,17 +24,38 @@ export default class SignIn extends React.Component<never, State> {
 		this.state = {
 			email: "",
 			password: "",
+			errorMessage: "",
+			url: "http://..../auth/signup",
 		};
 	}
 
-	render(): JSX.Element {
-		const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-			this.setState({ password: event.target.value });
+	handleSubmit = (event: FormEvent) => {
+		event.preventDefault();
+		const user = {
+			email: this.state.email,
+			password: this.state.password,
 		};
-		const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-			this.setState({ email: event.target.value });
-		};
+		// eslint-disable-next-line no-void
+		void axios
+			.post(this.state.url, { user })
+			.then((res) => {
+				console.log(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+				this.setState({ errorMessage: "Impossible to connect" });
+			});
+	};
 
+	handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		this.setState({ password: event.target.value });
+	};
+
+	handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		this.setState({ email: event.target.value });
+	};
+
+	render(): JSX.Element {
 		return (
 			<Container className="back" component="main" maxWidth="xl">
 				<Icone />
@@ -42,7 +65,7 @@ export default class SignIn extends React.Component<never, State> {
 						<Typography className="center text_color_main" component="h1" variant="h5">
 							<strong>Login</strong>
 						</Typography>
-						<form noValidate>
+						<form onSubmit={this.handleSubmit}>
 							<TextField
 								variant="outlined"
 								margin="normal"
@@ -52,7 +75,7 @@ export default class SignIn extends React.Component<never, State> {
 								label="Email Address"
 								name="email"
 								value={this.state.password}
-								onChange={handlePasswordChange}
+								onChange={this.handlePasswordChange}
 								autoComplete="email"
 								autoFocus
 							/>
@@ -66,9 +89,10 @@ export default class SignIn extends React.Component<never, State> {
 								type="password"
 								id="password"
 								value={this.state.email}
-								onChange={handleEmailChange}
+								onChange={this.handleEmailChange}
 								autoComplete="current-password"
 							/>
+							<h4 className="error"> {this.state.errorMessage} </h4>
 							<Button
 								style={{
 									backgroundColor: "#0f384a",

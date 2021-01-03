@@ -20,10 +20,11 @@ export default class Validation extends React.Component<void, State> {
 		};
 	}
 
+	handleCodeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		this.setState({ code: event.target.value });
+	};
+
 	render(): JSX.Element {
-		const handleCodeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-			this.setState({ code: event.target.value });
-		};
 		return (
 			<Container className="back" component="main" maxWidth="xl">
 				<Icone />
@@ -44,7 +45,7 @@ export default class Validation extends React.Component<void, State> {
 								label="Code"
 								name="code"
 								value={this.state.code}
-								onChange={handleCodeChange}
+								onChange={this.handleCodeChange}
 								autoComplete="code"
 								autoFocus
 							/>

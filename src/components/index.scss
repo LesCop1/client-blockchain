@@ -2,13 +2,14 @@
 .back {
 	height: 100vh;
 	width: 100%;
-	background-image: url(../image/dominik-dombrowski-KNUp-YBwBSE-unsplash.jpg);
+	background-image: url(../image/fond.jpg);
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
 }
 
 .icone {
+	margin-top: 10px;
 	height: 50px;
 	width: 50px;
 	background-image: url(../image/contour.png);
@@ -51,4 +52,9 @@
 
 .text_color_link {
 	color: #6a8aa6;
+}
+
+.error {
+	color: #D8000C;
+	background-color: #FFD2D2;
 }
