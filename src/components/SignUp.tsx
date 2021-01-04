@@ -160,6 +160,7 @@ export default function SignUp(): JSX.Element {
 								}));
 							}}
 							renderInput={(props) => (
+								// eslint-disable-next-line react/jsx-props-no-spreading
 								<TextField {...props} fullWidth helperText={errorMessage.birthDate && errorMessage.birthDate} error={!!errorMessage.birthDate} />
 							)}
 						/>
