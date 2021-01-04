@@ -1,7 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.scss";
 import App from "./App";
+
+import "./index.scss";
+import "./layouts/DashboardLayout.scss";
+import "./layouts/DefaultLayout.scss";
+import "./components/SignIn.scss";
+import "./components/SignUp.scss";
+import "./pages/Homepage.scss";
 
 ReactDOM.render(
 	<React.StrictMode>
