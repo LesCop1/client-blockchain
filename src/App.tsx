@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Homepage from "./pages/Homepage";
 import NotFound from "./pages/NotFound";
-import ModifyPass from "./pages/ModifyPass";
+import ModifyPassPage from "./pages/ModifyPassPage";
 import Validation from "./pages/Validation";
 import ForgotPassword from "./pages/ForgotPassword";
 import Dashboard from "./pages/Dashboard";
@@ -16,7 +16,7 @@ function App(): JSX.Element {
 				<Route exact path="/" component={Homepage as never} />
 				<Route exact path="/dashboard" component={Dashboard as never} />
 				<Route exact path="/forgotpassword" component={ForgotPassword as never} />
-				<Route exact path="/changepassword" component={ModifyPass as never} />
+				<Route exact path="/changepassword" component={ModifyPassPage as never} />
 				<Route exact path="/validation" component={Validation as never} />
 				<Route component={NotFound as never} />
 			</Switch>
