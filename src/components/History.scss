@@ -1,0 +1,29 @@
+.title {
+  color: #2e4853;
+  font-weight: bold;
+  text-align: center;
+}
+
+.activity {
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.history_title {
+  color: #2e4853;
+
+  margin-bottom: 10px !important;
+}
+
+.history_item_description {
+  .history_item_description_colored {
+    color: #2e4853;
+    font-weight: bold;
+  }
+
+  div {
+    display: inline-block;
+  }
+}
