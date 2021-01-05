@@ -9,6 +9,7 @@ import "./components/SignIn.scss";
 import "./components/SignUp.scss";
 import "./components/ForgotPass.scss";
 import "./pages/Homepage.scss";
+import "./pages/Dashboard.scss";
 
 ReactDOM.render(
 	<React.StrictMode>
