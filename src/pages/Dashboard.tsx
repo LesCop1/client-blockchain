@@ -14,17 +14,11 @@ export default class Dashboard extends Component<void, { tabIndex: number }> {
 		this.setState({ tabIndex: newValue });
 	};
 
-	render() {
+	render(): JSX.Element {
 		return (
 			<div>
 				<AppBar position="static">
-					<Tabs
-						className="tabsStyle"
-						variant="scrollable"
-						scrollButtons="auto"
-						value={this.state.tabIndex}
-						onChange={this.handleTabChange}
-						aria-label="nav tabs example">
+					<Tabs className="tabsStyle" variant="scrollable" scrollButtons="auto" value={this.state.tabIndex} onChange={this.handleTabChange}>
 						<Tab className="tabsStyle" label="Tableau de bord" />
 						<Tab className="tabsStyle" label="Acheter / Vendre" />
 						<Tab className="tabsStyle" label="Miner" />
