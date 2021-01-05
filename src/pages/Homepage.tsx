@@ -1,29 +1,14 @@
-import React, { Component, ReactNode } from "react";
+import React, { Component } from "react";
 import { Tab, Tabs } from "@material-ui/core";
 import SwipeableViews from "react-swipeable-views";
 import DefaultLayout from "../layouts/DefaultLayout";
 import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
+import TabPanel from "../components/TabPanel";
 
 type HomepageState = {
 	tabIndex: number;
 };
-
-type TabPanelProps = {
-	children: ReactNode;
-	value: number;
-	index: number;
-};
-
-function TabPanel(props: TabPanelProps) {
-	const { children, value, index } = props;
-
-	return (
-		<div role="tabpanel" hidden={value !== index}>
-			{value === index ? children : <></>}
-		</div>
-	);
-}
 
 export default class Homepage extends Component<unknown, HomepageState> {
 	constructor(props: unknown) {
