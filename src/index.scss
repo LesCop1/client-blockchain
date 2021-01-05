@@ -14,3 +14,11 @@ body {
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+.MuiListItem-gutters {
+	padding-left: 16px !important;
+	padding-right: 16px !important;
+
+	width: 100% !important;
+	justify-content: flex-start !important;
+}

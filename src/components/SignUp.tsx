@@ -140,9 +140,7 @@ export default function SignUp(): JSX.Element {
 							}}
 							label="Nationality"
 							error={!!errorMessage.nationality}>
-							<MenuItem className="menu-item-glutters" value="FR">
-								FR
-							</MenuItem>
+							<MenuItem value="FR">FR</MenuItem>
 						</Select>
 						<FormHelperText>{errorMessage.nationality}</FormHelperText>
 					</FormControl>
