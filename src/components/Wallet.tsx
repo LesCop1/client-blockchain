@@ -6,12 +6,13 @@ type WalletProps = {
 		USD: number;
 		EC: number;
 	};
+	transferBtn?: boolean;
 };
 
 export default function Wallet(props: WalletProps): JSX.Element {
 	const [currency, setCurrency] = useState<"USD" | "EC">("USD");
 
-	function getCurrentMoney() {
+	function getCurrentBalance() {
 		return String(props.moneys[currency]) + (currency === "USD" ? "$" : "ec");
 	}
 
@@ -21,10 +22,14 @@ export default function Wallet(props: WalletProps): JSX.Element {
 				<Button onClick={() => setCurrency("USD")}>USD</Button>
 				<Button onClick={() => setCurrency("EC")}>EcoCoins</Button>
 			</ButtonGroup>
-			<div className="wallet_money">{getCurrentMoney()}</div>
-			<Button variant="contained" className="transfer-btn">
-				Transfer
-			</Button>
+			<div className="wallet_balance">{getCurrentBalance()}</div>
+			{props.transferBtn ? (
+				<Button variant="contained" className="transfer-btn">
+					Transfer
+				</Button>
+			) : (
+				<> </>
+			)}
 		</Paper>
 	);
 }

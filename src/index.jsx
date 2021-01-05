@@ -8,7 +8,6 @@ import "./layouts/DefaultLayout.scss";
 import "./components/SignIn.scss";
 import "./components/SignUp.scss";
 import "./components/Wallet.scss";
-import "./components/History.scss";
 import "./pages/Homepage.scss";
 import "./pages/Dashboard.scss";
 
