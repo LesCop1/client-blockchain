@@ -1,25 +1,25 @@
 @import "../globals";
 
 .DefaultLayout {
-  .header {
-    height: 10vh;
-    width: 100%;
-    background-color: $dark-blue;
-    display: flex;
-    align-items: center;
+	.header {
+		height: 10vh;
+		width: 100%;
+		background-color: $dark-blue;
+		display: flex;
+		align-items: center;
 
-    .logo {
-      padding: 10px;
-      height: calc(100% - (10px * 2));
+		.logo {
+			padding: 10px;
+			height: calc(100% - (10px * 2));
 
-      img {
-        height: 100%;
-      }
-    }
+			img {
+				height: 100%;
+			}
+		}
 
-    .brand-name {
-      font-size: larger;
-      color: white;
-    }
-  }
+		.brand-name {
+			font-size: larger;
+			color: white;
+		}
+	}
 }
