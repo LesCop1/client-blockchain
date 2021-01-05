@@ -1,97 +1,97 @@
 {
-  "name": "client",
-  "version": "0.1.0",
-  "homepage": ".",
-  "main": "build/electron/main.js",
-  "private": true,
-  "dependencies": {
-    "@emotion/react": "^11.1.4",
-    "@emotion/styled": "^11.0.0",
-    "@material-ui/core": "^5.0.0-alpha.21",
-    "@material-ui/icons": "^4.11.0",
-    "@material-ui/lab": "^5.0.0-alpha.21",
-    "@material-ui/pickers": "^4.0.0-alpha.12",
-    "@types/electron-devtools-installer": "^2.2.0",
-    "@types/node": "^14.14.2",
-    "@types/react": "^16.9.53",
-    "@types/react-dom": "^16.9.9",
-    "@types/react-router-dom": "^5.1.6",
-    "@types/react-swipeable-views": "^0.13.0",
-    "axios": "^0.21.1",
-    "date-fns": "^2.16.1",
-    "electron": "^10.1.5",
-    "electron-builder": "^22.9.1",
-    "electron-devtools-installer": "^3.1.1",
-    "electron-is-dev": "^1.2.0",
-    "electron-reload": "^1.5.0",
-    "node-sass": "^4.14.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.0",
-    "react-swipeable-views": "^0.13.9"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "postinstall": "electron-builder install-app-deps",
-    "electron:dev": "concurrently \"SET BROWSER=none && npm start\" \"wait-on http://localhost:3000 && tsc -p electron -w\" \"wait-on http://localhost:3000 && tsc -p electron && electron .\"",
-    "electron:build": "npm build && tsc -p electron && electron-builder",
-    "lint:check": "eslint ./**/*.{ts,tsx,js,jsx}",
-    "lint:fix": "eslint --fix ./**/*.{ts,tsx,js,jsx}",
-    "prettier:check": "prettier --check .",
-    "prettier:fix": "prettier --write .",
-    "eject": "react-scripts eject"
-  },
-  "build": {
-    "extends": null,
-    "files": [
-      "build/**/*"
-    ],
-    "directories": {
-      "buildResources": "assets"
-    }
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.6.0",
-    "@typescript-eslint/parser": "^4.6.0",
-    "concurrently": "^5.3.0",
-    "eslint": "^7.12.1",
-    "eslint-config-airbnb-typescript": "^12.0.0",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.0",
-    "prettier": "^2.1.2",
-    "typescript": "~4.0.5",
-    "wait-on": "^5.2.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,tsx,js,jsx}": [
-      "prettier --write .",
-      "eslint --fix ./**/*.{ts,tsx,js,jsx}"
-    ]
-  }
+	"name": "client",
+	"version": "0.1.0",
+	"homepage": ".",
+	"main": "build/electron/main.js",
+	"private": true,
+	"dependencies": {
+		"@emotion/react": "^11.1.4",
+		"@emotion/styled": "^11.0.0",
+		"@material-ui/core": "^5.0.0-alpha.21",
+		"@material-ui/icons": "^4.11.0",
+		"@material-ui/lab": "^5.0.0-alpha.21",
+		"@material-ui/pickers": "^4.0.0-alpha.12",
+		"@types/electron-devtools-installer": "^2.2.0",
+		"@types/node": "^14.14.2",
+		"@types/react": "^16.9.53",
+		"@types/react-dom": "^16.9.9",
+		"@types/react-router-dom": "^5.1.6",
+		"@types/react-swipeable-views": "^0.13.0",
+		"axios": "^0.21.1",
+		"date-fns": "^2.16.1",
+		"electron": "^10.1.5",
+		"electron-builder": "^22.9.1",
+		"electron-devtools-installer": "^3.1.1",
+		"electron-is-dev": "^1.2.0",
+		"electron-reload": "^1.5.0",
+		"node-sass": "^4.14.1",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"react-router-dom": "^5.2.0",
+		"react-scripts": "4.0.0",
+		"react-swipeable-views": "^0.13.9"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"postinstall": "electron-builder install-app-deps",
+		"electron:dev": "concurrently \"SET BROWSER=none && npm start\" \"wait-on http://localhost:3000 && tsc -p electron -w\" \"wait-on http://localhost:3000 && tsc -p electron && electron .\"",
+		"electron:build": "npm build && tsc -p electron && electron-builder",
+		"lint:check": "eslint ./**/*.{ts,tsx,js,jsx}",
+		"lint:fix": "eslint --fix ./**/*.{ts,tsx,js,jsx}",
+		"prettier:check": "prettier --check .",
+		"prettier:fix": "prettier --write .",
+		"eject": "react-scripts eject"
+	},
+	"build": {
+		"extends": null,
+		"files": [
+			"build/**/*"
+		],
+		"directories": {
+			"buildResources": "assets"
+		}
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^4.6.0",
+		"@typescript-eslint/parser": "^4.6.0",
+		"concurrently": "^5.3.0",
+		"eslint": "^7.12.1",
+		"eslint-config-airbnb-typescript": "^12.0.0",
+		"eslint-config-prettier": "^6.15.0",
+		"eslint-plugin-import": "^2.22.1",
+		"eslint-plugin-jsx-a11y": "^6.4.1",
+		"eslint-plugin-prettier": "^3.1.4",
+		"eslint-plugin-react": "^7.21.5",
+		"eslint-plugin-react-hooks": "^4.2.0",
+		"husky": "^4.3.0",
+		"lint-staged": "^10.5.0",
+		"prettier": "^2.1.2",
+		"typescript": "~4.0.5",
+		"wait-on": "^5.2.0"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{ts,tsx,js,jsx}": [
+			"prettier --write .",
+			"eslint --fix ./**/*.{ts,tsx,js,jsx}"
+		]
+	}
 }
