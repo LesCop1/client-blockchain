@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import ModifyPass from "./pages/ModifyPass";
 import Validation from "./pages/Validation";
 import ForgotPassword from "./pages/ForgotPassword";
+import Dashboard from "./pages/Dashboard";
 
 function App(): JSX.Element {
 	return (
@@ -13,6 +14,7 @@ function App(): JSX.Element {
 			<Switch>
 				{/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */}
 				<Route exact path="/" component={Homepage as never} />
+				<Route exact path="/dashboard" component={Dashboard as never} />
 				<Route exact path="/forgotpassword" component={ForgotPassword as never} />
 				<Route exact path="/changepassword" component={ModifyPass as never} />
 				<Route exact path="/validation" component={Validation as never} />
