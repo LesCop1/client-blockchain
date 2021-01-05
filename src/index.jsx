@@ -10,8 +10,8 @@ import "./components/SignUp.scss";
 import "./pages/Homepage.scss";
 
 ReactDOM.render(
-	<React.StrictMode>
-		<App />
-	</React.StrictMode>,
-	document.getElementById("root")
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
 );

@@ -5,7 +5,10 @@
 			"jsx": true
 		},
 		"sourceType": "module",
-		"project": ["./tsconfig.json", "./electron/tsconfig.json"]
+		"project": [
+			"./tsconfig.json",
+			"./electron/tsconfig.json"
+		]
 	},
 	"env": {
 		"browser": true,
@@ -17,7 +20,12 @@
 			"version": "detect"
 		}
 	},
-	"plugins": ["@typescript-eslint", "react", "prettier", "react-hooks"],
+	"plugins": [
+		"@typescript-eslint",
+		"react",
+		"prettier",
+		"react-hooks"
+	],
 	"extends": [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended",
