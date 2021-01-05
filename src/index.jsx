@@ -7,6 +7,7 @@ import "./layouts/DashboardLayout.scss";
 import "./layouts/DefaultLayout.scss";
 import "./components/SignIn.scss";
 import "./components/SignUp.scss";
+import "./components/TransferCurrency.scss";
 import "./components/ForgotPass.scss";
 import "./pages/Homepage.scss";
 
