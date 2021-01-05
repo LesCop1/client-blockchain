@@ -3,7 +3,7 @@ import React from "react";
 
 type DataType = {
 	date: Date;
-	description: string;
+	description: string[];
 	value: number[];
 };
 
@@ -11,25 +11,27 @@ type HistoryProps = {
 	title: string;
 	length: number;
 	data: DataType[];
-	type: "singleValue" | "doubleValue";
+	type: "activityValue" | "transactionValue" | "miningValue";
 };
 
 type HistoryItemProps = {
 	key: number;
 } & DataType;
 
-function HistorySingleValueItem(props: HistoryItemProps) {
+function HistoryActivityValueItem(props: HistoryItemProps) {
 	return (
 		<div key={props.key}>
-			<Grid container spacing={1} style={{ textAlign: "center" }}>
+			<Grid container spacing={1} alignItems="center" style={{ textAlign: "center" }}>
 				<Grid item xs={4}>
-					{props.date.toDateString()}
+					<Typography variant="body1" color="textPrimary">
+						{props.date.toDateString()}
+					</Typography>
 				</Grid>
 				<Grid item xs={4} className="history_item_description">
-					{props.description}
+					<Typography color="textSecondary">{props.description[0]}</Typography>
 				</Grid>
 				<Grid item xs={4}>
-					{props.value[0]} $
+					<Typography color="primary">{props.value[0]} $</Typography>
 				</Grid>
 			</Grid>
 			<Divider />
@@ -37,19 +39,58 @@ function HistorySingleValueItem(props: HistoryItemProps) {
 	);
 }
 
-function HistoryDoubleValueItem(props: HistoryItemProps) {
+function HistoryTransactionValueItem(props: HistoryItemProps) {
 	return (
 		<div key={props.key}>
-			<Grid container spacing={1} style={{ textAlign: "center" }}>
+			<Grid container spacing={1} alignItems="center" style={{ textAlign: "center" }}>
 				<Grid item xs={4}>
-					{props.date.toDateString()}
+					<Typography variant="body1" color="textPrimary">
+						{props.date.toDateString()}
+					</Typography>
 				</Grid>
 				<Grid item xs={4} className="history_item_description">
-					<div className="history_item_description_colored">To :</div>
-					<div>{props.description}</div>
+					<Typography color="textSecondary">To : {props.description[0]}</Typography>
 				</Grid>
 				<Grid item xs={4}>
-					{props.value[0]} $ ➜ {props.value[1]} EC
+					<Typography color="primary">
+						{props.value[0]} $ ➜ {props.value[1]} EC
+					</Typography>
+				</Grid>
+			</Grid>
+			<Divider />
+		</div>
+	);
+}
+
+function HistoryMiningValueItem(props: HistoryItemProps) {
+	return (
+		<div key={props.key}>
+			<Grid container spacing={1} alignItems="center" style={{ textAlign: "center" }}>
+				<Grid item xs={3}>
+					<Typography variant="body1" color="textPrimary">
+						{props.date.toDateString()}
+					</Typography>
+				</Grid>
+				<Grid item xs={3} className="history_item_description">
+					<Typography color="textSecondary">
+						Consumption :{" "}
+						<Typography color="primary" display="inline" noWrap>
+							{props.description[0]} W
+						</Typography>
+					</Typography>
+				</Grid>
+				<Grid item xs={3} className="history_item_description">
+					<Typography color="textSecondary">
+						Time :{" "}
+						<Typography color="primary" display="inline" noWrap>
+							{props.description[1]} min
+						</Typography>
+					</Typography>
+				</Grid>
+				<Grid item xs={3}>
+					<Typography color="primary" noWrap>
+						{props.value[0]} $
+					</Typography>
 				</Grid>
 			</Grid>
 			<Divider />
@@ -63,14 +104,17 @@ export default function History(props: HistoryProps): JSX.Element {
 
 		let itemFunction: (props: HistoryItemProps) => JSX.Element;
 		switch (props.type) {
-			case "singleValue":
-				itemFunction = HistorySingleValueItem;
+			case "activityValue":
+				itemFunction = HistoryActivityValueItem;
 				break;
-			case "doubleValue":
-				itemFunction = HistoryDoubleValueItem;
+			case "transactionValue":
+				itemFunction = HistoryTransactionValueItem;
+				break;
+			case "miningValue":
+				itemFunction = HistoryMiningValueItem;
 				break;
 			default:
-				itemFunction = HistorySingleValueItem;
+				itemFunction = HistoryActivityValueItem;
 				break;
 		}
 
