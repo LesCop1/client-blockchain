@@ -2,13 +2,11 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Paper, Typography } from "@material-ui/core";
 import { ResponsiveLine } from "@nivo/line";
-import useWebSocket from "react-use-websocket";
 import Chart from "./Chart";
 import Wallet from "./Wallet";
 import History from "./History";
 import DashboardService from "../services/DashboardService";
 import { SuccessResponse } from "../services/APIService";
-import globals from "../globals";
 
 type GeneralDashboardType = {
 	transferBtnCb: () => void;
@@ -16,49 +14,38 @@ type GeneralDashboardType = {
 
 export default function GeneralDashboard(props: GeneralDashboardType): JSX.Element {
 	const [info, setInfo] = useState({});
-	const [stockPrices, setStockPrices] = useState([{}]);
-
-	const { lastJsonMessage } = useWebSocket(`${globals.WS_URL}/dashboard`);
+	const [stockPrices, setStockPrices] = useState([]);
 
 	useEffect(() => {
 		async function getInfo() {
 			const { data } = (await DashboardService.getInfo()) as SuccessResponse;
 			// @ts-ignore
-			setInfo(data);
+			setInfo(data.data);
+			// @ts-ignore
+			const newStockPrices = [];
+			for (let i = 0; i < 20; i++) {
+				// @ts-ignore
+				if (data.data.stockPrices[i].value) {
+					// @ts-ignore
+					newStockPrices.push({
+						// @ts-ignore
+						x: data.data.stockPrices[i].date,
+						// @ts-ignore
+						y: data.data.stockPrices[i].value,
+					});
+				}
+			}
+			// @ts-ignore
+			setStockPrices(newStockPrices);
 		}
 		getInfo();
 	}, []);
 
-	useEffect(() => {
-		const newStockPrices = stockPrices.splice(1, 20);
-		newStockPrices.push({
-			x: lastJsonMessage.date,
-			y: lastJsonMessage.price,
-		});
-
-		setStockPrices(newStockPrices);
-	}, [lastJsonMessage]);
-
-	const thing = [
+	const sampleStat = [
 		{
-			title: "yo",
-			description: "yoyoyoyo",
-			value: "87%",
-		},
-		{
-			title: "bjr",
-			description: "je suis du text",
-			value: "24mW",
-		},
-		{
-			title: "genial",
-			description: "c vrément interessant",
-			value: "1min",
-		},
-		{
-			title: "jeasis pas",
-			description: "moi non plus c ouf",
-			value: "20",
+			title: "Prix moyen",
+			description: "le prix moyen",
+			value: "50 EC",
 		},
 	];
 
@@ -66,22 +53,22 @@ export default function GeneralDashboard(props: GeneralDashboardType): JSX.Eleme
 		<Grid container className="general-dashboard" alignContent="space-around">
 			<Grid item sm={6} className="general-dashboard_wallet">
 				{/* @ts-ignore */}
-				<Wallet moneys={info.balance} transferBtn={props.transferBtnCb} />
+				<Wallet moneys={info.user?.balance || { EC: 0, USD: 0 }} transferBtn={props.transferBtnCb} />
 			</Grid>
 			<Grid item sm={6} className="general-dashboard_history">
 				{/* @ts-ignore */}
-				<History title="Recent Activities" length={5} data={info.history} type="activity" />
+				<History title="Recent Activities" length={5} data={[]} type="activity" />
 			</Grid>
 			<Grid item sm={12} className="general-dashboard_chart">
 				<Chart
-					title="EcoCoin stats"
-					stats={thing}
+					title="EcoCoin stock prices"
+					stats={sampleStat}
 					charts={[
 						<ResponsiveLine
 							key={0}
 							data={[
 								{
-									id: "Stock exchange",
+									id: "Stock prices",
 									data: stockPrices,
 								},
 							]}

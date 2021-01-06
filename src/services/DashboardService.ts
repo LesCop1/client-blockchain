@@ -3,7 +3,7 @@ import APIService, { ErrorResponse, SuccessResponse } from "./APIService";
 const basePath = "/user";
 
 async function getInfo(): Promise<SuccessResponse | ErrorResponse> {
-	const path = `${basePath}/user/dashboard`;
+	const path = `${basePath}/dashboard`;
 	return APIService.get(path);
 }
 

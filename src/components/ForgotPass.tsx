@@ -18,8 +18,6 @@ export default function ForgotPass(props: EmailProps): JSX.Element {
 		e.preventDefault();
 		let error = false;
 
-		/* TODO Check if email is in database */
-
 		if (!email.match(emailValidationRegex) || email === "") {
 			error = true;
 			setErrorMessage({

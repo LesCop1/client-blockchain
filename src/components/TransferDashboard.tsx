@@ -1,60 +1,47 @@
-import React from "react";
+/* eslint-disable */
+import React, { useEffect, useState } from "react";
 import { Paper, Typography } from "@material-ui/core";
 import { ResponsiveLine } from "@nivo/line";
 import Chart from "./Chart";
 import TransferCurrency from "./TransferCurrency";
 import Wallet from "./Wallet";
 import History from "./History";
+import DashboardService from "../services/DashboardService";
+import { SuccessResponse } from "../services/APIService";
 
 export default function TransferDashboard(): JSX.Element {
-	const thing = [
-		{
-			title: "jeasis pas",
-			description: "moi non plus c ouf",
-			value: "20",
-		},
-	];
+	const [info, setInfo] = useState({});
+	const [stockPrices, setStockPrices] = useState([]);
 
-	const history = [
+	useEffect(() => {
+		async function getInfo() {
+			const { data } = (await DashboardService.getInfo()) as SuccessResponse;
+			// @ts-ignore
+			setInfo(data.data);
+			const newStockPrices = [];
+			for (let i = 0; i < 20; i++) {
+				// @ts-ignore
+				if (data.data.stockPrices[i].value) {
+					// @ts-ignore
+					newStockPrices.push({
+						// @ts-ignore
+						x: data.data.stockPrices[i].date,
+						// @ts-ignore
+						y: data.data.stockPrices[i].value,
+					});
+				}
+			}
+			// @ts-ignore
+			setStockPrices(newStockPrices);
+		}
+		getInfo();
+	}, []);
+
+	const sampleStat = [
 		{
-			date: new Date(),
-			description: ["mathisengels@yahoo.fr"],
-			value: [35.08, 95.42],
-		},
-		{
-			date: new Date(),
-			description: ["mathisengels@yahoo.fr"],
-			value: [33.11, 32.18],
-		},
-		{
-			date: new Date(),
-			description: ["mathisengels@yahoo.fr"],
-			value: [65.08, 21.48],
-		},
-		{
-			date: new Date(),
-			description: ["mathisengels@yahoo.fr"],
-			value: [21.83, 108.55],
-		},
-		{
-			date: new Date(),
-			description: ["mathisengels@yahoo.fr"],
-			value: [1.25, 0.64],
-		},
-		{
-			date: new Date(),
-			description: ["mathisengels@yahoo.fr"],
-			value: [2.54, 4.65],
-		},
-		{
-			date: new Date(),
-			description: ["mathisengels@yahoo.fr"],
-			value: [0.24, 1.65],
-		},
-		{
-			date: new Date(),
-			description: ["mathisengels@yahoo.fr"],
-			value: [0.99, 8.54],
+			title: "Prix moyen",
+			description: "le prix moyen",
+			value: "50 EC",
 		},
 	];
 
@@ -62,23 +49,15 @@ export default function TransferDashboard(): JSX.Element {
 		<div className="transfer-dashboard_container">
 			<div className="transfer-dashboard_left-side">
 				<Chart
-					title="Titre test"
-					stats={thing}
+					title="EcoCoin stock prices"
+					stats={sampleStat}
 					charts={[
 						<ResponsiveLine
 							key={0}
 							data={[
 								{
-									id: "stock exchange",
-									data: [
-										{ x: "2019-05-29 04:00:00", y: 7 },
-										{ x: "2019-05-29 04:01:05", y: 5 },
-										{ x: "2019-05-29 04:01:23", y: 11 },
-										{ x: "2019-05-29 04:02:24", y: 9 },
-										{ x: "2019-05-29 04:03:04", y: 13 },
-										{ x: "2019-05-29 04:03:45", y: 16 },
-										{ x: "2019-05-29 04:03:51", y: 12 },
-									],
+									id: "Stock prices",
+									data: stockPrices,
 								},
 							]}
 							margin={{ top: 50, right: 60, bottom: 50, left: 60 }}
@@ -131,8 +110,10 @@ export default function TransferDashboard(): JSX.Element {
 				<TransferCurrency balance={{ EC: 32, USD: 44 }} />
 			</div>
 			<div className="transfer-dashboard_right-side">
-				<Wallet moneys={{ EC: 44, USD: 32 }} />
-				<History title="Recent Transactions" length={10} data={history} type="transaction" />
+				{/* @ts-ignore */}
+				<Wallet moneys={info.user?.balance || { EC: 0, USD: 0 }} />
+				{/* @ts-ignore */}
+				<History title="Recent Transactions" length={10} data={[]} type="transaction" />
 			</div>
 		</div>
 	);

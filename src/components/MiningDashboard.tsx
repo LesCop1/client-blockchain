@@ -7,14 +7,14 @@ import Chart from "./Chart";
 export default function MiningDashboard(): JSX.Element {
 	const thing = [
 		{
-			title: "jeasis pas",
-			description: "moi non plus c ouf",
-			value: "20",
+			title: "Average consumption",
+			description: "avg W",
+			value: "20 W",
 		},
 		{
-			title: "jeasis pas",
-			description: "moi non plus c ouf",
-			value: "20",
+			title: "Average time",
+			description: "avg min",
+			value: "10 min",
 		},
 	];
 
@@ -51,7 +51,7 @@ export default function MiningDashboard(): JSX.Element {
 			<Grid item sm={12} container alignItems="center">
 				<Grid item sm={6} className="mining-dashboard_chart">
 					<Chart
-						title="Titre test"
+						title="Mining stats"
 						stats={thing}
 						charts={[
 							<ResponsiveLine
