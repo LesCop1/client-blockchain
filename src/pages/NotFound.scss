@@ -1,0 +1,39 @@
+@import "../globals";
+
+.not-found-section {
+	background-color: $dark-blue;
+	box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.25);
+
+	margin-top: 100px;
+	transform: skewY(5deg);
+
+	&:nth-child(1) {
+		.not-found-section_body {
+			text-align: start;
+		}
+	}
+
+	&:nth-child(2) {
+		margin-top: 200px;
+	}
+
+	.not-found-section_body {
+		display: inline-block;
+		width: calc(100% - 100px);
+
+		transform: skewY(-5deg);
+		color: white;
+
+		padding: 25px 50px 35px;
+
+		text-align: center;
+
+		.not-found-section_title {
+			font-size: xx-large;
+		}
+
+		p.not-found-section_title {
+			margin: 0;
+		}
+	}
+}

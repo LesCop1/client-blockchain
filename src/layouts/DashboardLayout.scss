@@ -1,0 +1,29 @@
+@import "../globals";
+
+.dashboard-layout {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+
+	.header {
+		height: 10vh;
+		width: 100%;
+		background-color: $dark-blue;
+		display: flex;
+		align-items: center;
+
+		.logo {
+			padding: 10px;
+			height: calc(100% - (10px * 2));
+
+			img {
+				height: 100%;
+			}
+		}
+
+		.brand-name {
+			font-size: larger;
+			color: white;
+		}
+	}
+}

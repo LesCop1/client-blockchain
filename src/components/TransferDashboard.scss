@@ -1,0 +1,15 @@
+.transfer-dashboard_container {
+	display: flex;
+	justify-content: center;
+	height: 100%;
+
+	.transfer-dashboard_left-side,
+	.transfer-dashboard_right-side {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		width: 49%;
+
+		margin: 16px;
+	}
+}

@@ -8,15 +8,17 @@ let win: BrowserWindow | null = null;
 
 function createWindow() {
 	win = new BrowserWindow({
-		width: 800,
-		height: 600,
+		minWidth: 930,
+		minHeight: 750,
+		width: 1200,
+		height: 1000,
 		webPreferences: {
 			nodeIntegration: true,
 		},
 	});
 
 	if (isDev) {
-		win.loadURL("http://localhost:3000/");
+		win.loadURL("http://localhost:3000/dashboard");
 	} else {
 		// 'build/index.html'
 		win.loadURL(`file://${__dirname}/`);

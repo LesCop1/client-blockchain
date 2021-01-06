@@ -1,0 +1,13 @@
+.wallet {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+
+	min-width: 200px;
+	padding-bottom: 5px;
+
+	.wallet_balance {
+		font-size: 32px;
+	}
+}
