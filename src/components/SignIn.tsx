@@ -1,8 +1,7 @@
 import React, { FormEvent, useState } from "react";
-import { CircularProgress, MuiThemeProvider, TextField } from "@material-ui/core";
+import { CircularProgress, TextField } from "@material-ui/core";
 import { LoadingButton } from "@material-ui/lab";
 import { Link } from "react-router-dom";
-import { theme } from "../layouts/DefaultLayout";
 
 const emailValidationRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
@@ -38,71 +37,69 @@ export default function SignIn(): JSX.Element {
 	};
 
 	return (
-		<MuiThemeProvider theme={theme}>
-			<form className="sign-in-form" noValidate>
-				<TextField
-					variant="outlined"
-					margin="normal"
-					required
-					fullWidth
-					label="Email"
-					name="email"
-					type="email"
-					autoComplete="email"
-					value={email}
-					color="primary"
-					onChange={(e) => {
-						setEmail(e.target.value);
-						setErrorMessage((prev) => ({
-							...prev,
-							email: undefined,
-						}));
-					}}
-					error={!!errorMessage.email}
-					helperText={errorMessage.email && errorMessage.email}
-					autoFocus
-				/>
-				<TextField
-					variant="outlined"
-					margin="normal"
-					required
-					fullWidth
-					label="Password"
-					name="password"
-					type="password"
-					autoComplete="current-password"
-					value={password}
-					color="primary"
-					onChange={(e) => {
-						setPassword(e.target.value);
-						setErrorMessage((prev) => ({
-							...prev,
-							password: undefined,
-						}));
-					}}
-					error={!!errorMessage.password}
-					helperText={errorMessage.password && errorMessage.password}
-				/>
-				<LoadingButton
-					className="sign-in-form-submit"
-					fullWidth
-					pending={loading}
-					pendingIndicator={<CircularProgress color="primary" size={24} />}
-					color="primary"
-					variant="contained"
-					onClick={handleSubmit}>
-					Sign In !
-				</LoadingButton>
-				<Link
-					to={{
-						pathname: "/forgotpassword",
-						state: {
-							email,
-						},
-					}}>
-					Forgot password ?
-				</Link>
-			</form>
-		</MuiThemeProvider>
+		<form className="sign-in-form" noValidate>
+			<TextField
+				variant="outlined"
+				margin="normal"
+				required
+				fullWidth
+				label="Email"
+				name="email"
+				type="email"
+				autoComplete="email"
+				value={email}
+				color="primary"
+				onChange={(e) => {
+					setEmail(e.target.value);
+					setErrorMessage((prev) => ({
+						...prev,
+						email: undefined,
+					}));
+				}}
+				error={!!errorMessage.email}
+				helperText={errorMessage.email && errorMessage.email}
+				autoFocus
+			/>
+			<TextField
+				variant="outlined"
+				margin="normal"
+				required
+				fullWidth
+				label="Password"
+				name="password"
+				type="password"
+				autoComplete="current-password"
+				value={password}
+				color="primary"
+				onChange={(e) => {
+					setPassword(e.target.value);
+					setErrorMessage((prev) => ({
+						...prev,
+						password: undefined,
+					}));
+				}}
+				error={!!errorMessage.password}
+				helperText={errorMessage.password && errorMessage.password}
+			/>
+			<LoadingButton
+				className="sign-in-form-submit"
+				fullWidth
+				pending={loading}
+				pendingIndicator={<CircularProgress color="primary" size={24} />}
+				color="primary"
+				variant="contained"
+				onClick={handleSubmit}>
+				Sign In !
+			</LoadingButton>
+			<Link
+				to={{
+					pathname: "/forgotpassword",
+					state: {
+						email,
+					},
+				}}>
+				Forgot password ?
+			</Link>
+		</form>
 	);
 }

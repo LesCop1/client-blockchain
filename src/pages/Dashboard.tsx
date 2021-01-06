@@ -6,6 +6,7 @@ import SwipeableViews from "react-swipeable-views";
 import { MuiThemeProvider } from "@material-ui/core";
 import TabPanel from "../components/TabPanel";
 import { theme } from "../layouts/DefaultLayout";
+import DashboardLayout from "../layouts/DashboardLayout";
 
 export default class Dashboard extends Component<void, { tabIndex: number }> {
 	constructor() {
@@ -20,7 +21,7 @@ export default class Dashboard extends Component<void, { tabIndex: number }> {
 	render(): JSX.Element {
 		return (
 			<MuiThemeProvider theme={theme}>
-				<div>
+				<DashboardLayout>
 					<AppBar position="static">
 						<Tabs
 							className="tabsStyle"
@@ -50,7 +51,7 @@ export default class Dashboard extends Component<void, { tabIndex: number }> {
 							Page Three
 						</TabPanel>
 					</SwipeableViews>
-				</div>
+				</DashboardLayout>
 			</MuiThemeProvider>
 		);
 	}
