@@ -1,5 +1,17 @@
 import React, { ReactNode } from "react";
 import { Grid, Paper } from "@material-ui/core";
+import { createMuiTheme } from "@material-ui/core/styles";
+
+export const theme = createMuiTheme({
+	palette: {
+		primary: {
+			main: "#2e4853",
+		},
+		secondary: {
+			main: "#D8D8D8",
+		},
+	},
+});
 
 function Container(props: { children: ReactNode }): JSX.Element {
 	return (
