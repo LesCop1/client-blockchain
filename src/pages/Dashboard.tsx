@@ -4,6 +4,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import SwipeableViews from "react-swipeable-views";
 import { MuiThemeProvider } from "@material-ui/core";
+import PowerSettingsNewIcon from "@material-ui/icons/PowerSettingsNew";
 import TabPanel from "../components/TabPanel";
 import { theme } from "../layouts/DefaultLayout";
 import DashboardLayout from "../layouts/DashboardLayout";
@@ -25,7 +26,7 @@ export default class Dashboard extends Component<void, { tabIndex: number }> {
 					<AppBar position="static">
 						<Tabs
 							className="tabsStyle"
-							variant="scrollable"
+							variant="fullWidth"
 							scrollButtons="auto"
 							value={this.state.tabIndex}
 							color="secondary"
@@ -37,6 +38,8 @@ export default class Dashboard extends Component<void, { tabIndex: number }> {
 							<Tab className="tabStyle" label="Paramètres" />
 							<Tab className="tabStyle" label="Aide" />
 							<Tab className="tabStyle" label="Contact" />
+							{/* TODO disconnect action */}
+							<Tab className="tabStyle" icon={<PowerSettingsNewIcon />} />
 						</Tabs>
 					</AppBar>
 
