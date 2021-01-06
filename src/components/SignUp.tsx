@@ -3,10 +3,16 @@ import { CircularProgress, FormControl, FormHelperText, Grid, InputLabel, MenuIt
 import { LoadingButton } from "@material-ui/lab";
 import { DatePicker, LocalizationProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@material-ui/pickers/adapter/date-fns";
+import { useHistory } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import AuthService from "../services/AuthService";
+import { ErrorResponse } from "../services/APIService";
+import { useAuth } from "../context/useAuth";
 
 const emailValidationRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 export default function SignUp(): JSX.Element {
+	const history = useHistory();
 	const [firstName, setFirstname] = useState<string>("");
 	const [lastName, setLastname] = useState<string>("");
 	const [nationality, setNationality] = useState<string>("");
@@ -23,7 +29,11 @@ export default function SignUp(): JSX.Element {
 	}>({});
 	const [loading, setLoading] = useState<boolean>(false);
 
-	const handleSubmit = (e: FormEvent): void => {
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
+	const { signIn } = useAuth();
+
+	const handleSubmit = async (e: FormEvent): Promise<void> => {
 		e.preventDefault();
 		let error = false;
 
@@ -73,9 +83,27 @@ export default function SignUp(): JSX.Element {
 		}
 
 		if (!error) {
-			console.log("hoi");
 			setErrorMessage({});
 			setLoading(true);
+			const loadingToast = toast.loading("Loading...");
+
+			const res = await AuthService.signUp(firstName, lastName, nationality, birthDate!, email, password);
+
+			setLoading(false);
+			if (res.success) {
+				toast.success("Account created!", {
+					id: loadingToast,
+				});
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+				signIn();
+				history.push("/dashboard");
+			} else {
+				const errRes = res as ErrorResponse;
+				// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+				toast.error(`${errRes.code} | ${errRes.error.message}`, {
+					id: loadingToast,
+				});
+			}
 		}
 	};
 

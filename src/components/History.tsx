@@ -11,14 +11,14 @@ type HistoryProps = {
 	title: string;
 	length: number;
 	data: DataType[];
-	type: "activityValue" | "transactionValue" | "miningValue";
+	type: "activity" | "transaction" | "mining";
 };
 
 type HistoryItemProps = {
 	key: number;
 } & DataType;
 
-function HistoryActivityValueItem(props: HistoryItemProps) {
+function HistoryActivityItem(props: HistoryItemProps) {
 	return (
 		<div key={props.key}>
 			<Grid container spacing={1} alignItems="center" style={{ textAlign: "center" }}>
@@ -39,7 +39,7 @@ function HistoryActivityValueItem(props: HistoryItemProps) {
 	);
 }
 
-function HistoryTransactionValueItem(props: HistoryItemProps) {
+function HistoryTransactionItem(props: HistoryItemProps) {
 	return (
 		<div key={props.key}>
 			<Grid container spacing={1} alignItems="center" style={{ textAlign: "center" }}>
@@ -62,7 +62,7 @@ function HistoryTransactionValueItem(props: HistoryItemProps) {
 	);
 }
 
-function HistoryMiningValueItem(props: HistoryItemProps) {
+function HistoryMiningItem(props: HistoryItemProps) {
 	return (
 		<div key={props.key}>
 			<Grid container spacing={1} alignItems="center" style={{ textAlign: "center" }}>
@@ -72,19 +72,15 @@ function HistoryMiningValueItem(props: HistoryItemProps) {
 					</Typography>
 				</Grid>
 				<Grid item xs={3} className="history_item_description">
-					<Typography color="textSecondary">
-						Consumption :{" "}
-						<Typography color="primary" display="inline" noWrap>
-							{props.description[0]} W
-						</Typography>
+					<Typography color="textSecondary">Consumption : </Typography>
+					<Typography color="primary" display="inline" noWrap>
+						{props.description[0]} W
 					</Typography>
 				</Grid>
 				<Grid item xs={3} className="history_item_description">
-					<Typography color="textSecondary">
-						Time :{" "}
-						<Typography color="primary" display="inline" noWrap>
-							{props.description[1]} min
-						</Typography>
+					<Typography color="textSecondary">Time : </Typography>
+					<Typography color="primary" display="inline" noWrap>
+						{props.description[1]} min
 					</Typography>
 				</Grid>
 				<Grid item xs={3}>
@@ -104,17 +100,17 @@ export default function History(props: HistoryProps): JSX.Element {
 
 		let itemFunction: (props: HistoryItemProps) => JSX.Element;
 		switch (props.type) {
-			case "activityValue":
-				itemFunction = HistoryActivityValueItem;
+			case "activity":
+				itemFunction = HistoryActivityItem;
 				break;
-			case "transactionValue":
-				itemFunction = HistoryTransactionValueItem;
+			case "transaction":
+				itemFunction = HistoryTransactionItem;
 				break;
-			case "miningValue":
-				itemFunction = HistoryMiningValueItem;
+			case "mining":
+				itemFunction = HistoryMiningItem;
 				break;
 			default:
-				itemFunction = HistoryActivityValueItem;
+				itemFunction = HistoryActivityItem;
 				break;
 		}
 
@@ -125,7 +121,7 @@ export default function History(props: HistoryProps): JSX.Element {
 
 	return (
 		<Paper elevation={12}>
-			<Typography align="center" variant="h5" className="history_title">
+			<Typography align="center" variant="h5" color="textPrimary">
 				{props.title}
 			</Typography>
 			{HistoryItems()}

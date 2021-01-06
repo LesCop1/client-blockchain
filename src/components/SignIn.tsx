@@ -1,17 +1,26 @@
 import React, { FormEvent, useState } from "react";
 import { CircularProgress, TextField } from "@material-ui/core";
 import { LoadingButton } from "@material-ui/lab";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import AuthService from "../services/AuthService";
+import { ErrorResponse } from "../services/APIService";
+import { useAuth } from "../context/useAuth";
 
 const emailValidationRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
 export default function SignIn(): JSX.Element {
+	const history = useHistory();
 	const [email, setEmail] = useState<string>("");
 	const [password, setPassword] = useState<string>("");
 	const [errorMessage, setErrorMessage] = useState<{ email?: string; password?: string }>({});
 	const [loading, setLoading] = useState<boolean>(false);
 
-	const handleSubmit = (e: FormEvent): void => {
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	// @ts-ignore
+	const { signIn } = useAuth();
+
+	const handleSubmit = async (e: FormEvent): Promise<void> => {
 		e.preventDefault();
 		let error = false;
 
@@ -33,6 +42,25 @@ export default function SignIn(): JSX.Element {
 		if (!error) {
 			setErrorMessage({});
 			setLoading(true);
+			const loadingToast = toast.loading("Loading...");
+
+			const res = await AuthService.signIn(email, password);
+
+			setLoading(false);
+			if (res.success) {
+				toast.success("Logged In!", {
+					id: loadingToast,
+				});
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+				signIn();
+				history.push("/dashboard");
+			} else {
+				const errRes = res as ErrorResponse;
+				// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+				toast.error(`${errRes.code} | ${errRes.error.message}`, {
+					id: loadingToast,
+				});
+			}
 		}
 	};
 
@@ -93,7 +121,7 @@ export default function SignIn(): JSX.Element {
 			</LoadingButton>
 			<Link
 				to={{
-					pathname: "/forgotpassword",
+					pathname: "/forgotPassword",
 					state: {
 						email,
 					},

@@ -1,0 +1,15 @@
+.mining-dashboard_chart,
+.mining-dashboard_history {
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.mining-dashboard-data {
+	padding-top: 16px;
+	display: flex;
+	justify-content: center;
+
+	.mining-dashboard-data_container {
+		padding: 16px;
+	}
+}
