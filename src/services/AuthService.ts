@@ -11,7 +11,7 @@ async function signUp(
 	firstname: string,
 	lastname: string,
 	nationality: string,
-	birthdate: Date,
+	birthDate: Date,
 	email: string,
 	password: string
 ): Promise<SuccessResponse | ErrorResponse> {
@@ -20,7 +20,7 @@ async function signUp(
 		firstname,
 		lastname,
 		nationality,
-		birthdate: birthdate.toISOString(),
+		birthDate: birthDate.toISOString(),
 		email,
 		password,
 	});
