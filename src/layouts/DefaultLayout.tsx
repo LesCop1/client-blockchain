@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 import { Grid, Paper } from "@material-ui/core";
+import { Toaster } from "react-hot-toast";
 import { createMuiTheme } from "@material-ui/core/styles";
 
 export const theme = createMuiTheme({
@@ -17,6 +18,7 @@ function Container(props: { children: ReactNode }): JSX.Element {
 	return (
 		<Grid container className="default-layout">
 			{props.children}
+			<Toaster position="bottom-center" />
 		</Grid>
 	);
 }

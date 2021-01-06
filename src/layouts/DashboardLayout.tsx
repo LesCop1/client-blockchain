@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import { Toaster } from "react-hot-toast";
 
 type PropsType = {
 	children: ReactNode;
@@ -7,14 +8,15 @@ type PropsType = {
 
 export default function DashboardLayout(props: PropsType): JSX.Element {
 	return (
-		<div className={`DefaultLayout ${props.class ? props.class : ""}`}>
+		<div className={`dashboard-layout ${props.class ? props.class : ""}`}>
 			<header className="header">
 				<div className="logo">
 					<img alt="EcoCoinApp" src="/logo.png" />
 				</div>
 				<div className="brand-name">EcoCoin</div>
 			</header>
-			<div>{props.children}</div>
+			{props.children}
+			<Toaster position="bottom-center" />
 		</div>
 	);
 }

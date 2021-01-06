@@ -1,6 +1,10 @@
 @import "../globals";
 
-.DefaultLayout {
+.dashboard-layout {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+
 	.header {
 		height: 10vh;
 		width: 100%;
